@@ -10,7 +10,7 @@ const projects = [
     description: "PDO Bulacan State University (BulSU) Kanban.",
     longDescription: "Bulacan State University (BulSU), the Kanban methodology is used in both software development and project management to improve workflow efficiency, transparency, and collaboration. In projects like the development of the SAKAHANDA digital agriculture system, Kanban helps teams visually track tasks, manage work-in-progress, and deliver results effectively. The Project Management Office (PMO) also applies Kanban principles to oversee infrastructure initiatives, allowing for real-time progress monitoring and bottleneck identification. Through visual boards, WIP limits, collaborative tools, and a commitment to continuous improvement, BulSU enhances its operations across academic and administrative functions.",
     tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/images/Kanban.png",
+    imageUrl: "/images/Kanban.png", // Corrected path
     githubUrl: "#",
     liveUrl: "https://pdokanban.web.app/",
     features: [
@@ -27,7 +27,7 @@ const projects = [
     description: "Performance Management and Evaluation System",
     longDescription: "A collaborative task management application built with TypeScript and Firebase. Features include real-time updates, drag-and-drop task organization, team management, and deadline tracking. The app uses Firebase Authentication for user management and Firestore for real-time data synchronization across devices.",
     tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/images/PMES.webp",
+    imageUrl: "/images/PMES.webp", // Corrected path
     githubUrl: "#",
     liveUrl: "#",
     features: [
@@ -44,7 +44,7 @@ const projects = [
     description: "Bulacan State University PDO Investment Programming System",
     longDescription: "A performant portfolio website built with Next.js and Tailwind CSS. The site features smooth animations with Framer Motion, lazy-loaded images for optimal performance, and a contact form with email integration. The design focuses on showcasing visual content with minimal distractions.",
     tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "BulSUPIPs.webp",
+    imageUrl: "/images/BulSUPIPs.webp", // Corrected path
     githubUrl: "#",
     liveUrl: "https://pdo-bulsupips.web.app/",
     features: [
