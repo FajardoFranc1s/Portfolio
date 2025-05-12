@@ -7,10 +7,10 @@ const projects = [
   {
     id: 1,
     title: "BulSU Kanban",
-    description: "PDO Bulacan State University (BulSU) Kanban  .",
+    description: "PDO Bulacan State University (BulSU) Kanban.",
     longDescription: "Bulacan State University (BulSU), the Kanban methodology is used in both software development and project management to improve workflow efficiency, transparency, and collaboration. In projects like the development of the SAKAHANDA digital agriculture system, Kanban helps teams visually track tasks, manage work-in-progress, and deliver results effectively. The Project Management Office (PMO) also applies Kanban principles to oversee infrastructure initiatives, allowing for real-time progress monitoring and bottleneck identification. Through visual boards, WIP limits, collaborative tools, and a commitment to continuous improvement, BulSU enhances its operations across academic and administrative functions.",
-    tags: ["React", "Material UI","GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "BulSU Kanban.webp",
+    tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/images/Kanban.png",
     githubUrl: "#",
     liveUrl: "https://pdokanban.web.app/",
     features: [
@@ -20,14 +20,14 @@ const projects = [
       "Task categorization",
       "Deadline notifications"
     ]
-  },  
+  },
   {
     id: 2,
     title: "PMES",
     description: "Performance Management and Evaluation System",
     longDescription: "A collaborative task management application built with TypeScript and Firebase. Features include real-time updates, drag-and-drop task organization, team management, and deadline tracking. The app uses Firebase Authentication for user management and Firestore for real-time data synchronization across devices.",
-    tags: ["React", "Material UI","GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "PMES.webp",
+    tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "/images/PMES.webp",
     githubUrl: "#",
     liveUrl: "#",
     features: [
@@ -42,9 +42,9 @@ const projects = [
     id: 3,
     title: "BulSU PIPs",
     description: "Bulacan State University PDO Investment Programming System",
-    longDescription: "A performant portfolio website built with Next.js and Tailwind CSS. The site features smooth animations with Framer Motion, lazy-loaded images for olazy-loaded images for optlazy-loaded images for optlazy-loaded images for optlazy-loaded images for optptimal performance, and a contact form with email integration. The design focuses on showcasing visual content with minimal distractions.",
-    tags: ["React", "Material UI","GSAP", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "BulSU PIPs.webp",
+    longDescription: "A performant portfolio website built with Next.js and Tailwind CSS. The site features smooth animations with Framer Motion, lazy-loaded images for optimal performance, and a contact form with email integration. The design focuses on showcasing visual content with minimal distractions.",
+    tags: ["React", "Material UI", "GSAP", "Tailwind CSS", "Framer Motion"],
+    imageUrl: "BulSUPIPs.webp",
     githubUrl: "#",
     liveUrl: "https://pdo-bulsupips.web.app/",
     features: [
@@ -64,12 +64,21 @@ export default function Home() {
   const openModal = (project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto';
+  };
+
+  const handleImageError = (e) => {
+    const project = projects.find(p => p.imageUrl === e.target.src);
+    if (project) {
+      e.target.src = project.fallbackImageUrl;
+      e.target.alt = `${project.title} (fallback image)`;
+    }
+    console.error('Image failed to load:', e.target.src);
   };
 
   return (
@@ -79,7 +88,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-4xl font-bold text-indigo-900 dark:text-white mb-8 text-center">Featured Projects</h2>
+        <h2 className="text-4xl font-bold text-indigo-900 dark:text-indigo-700 mb-8 text-center">Featured Projects</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -91,6 +100,7 @@ export default function Home() {
               <ProjectCard 
                 project={project}
                 index={index}
+                onImageError={handleImageError}
               />
             </div>
           ))}
@@ -126,12 +136,14 @@ export default function Home() {
 
               {/* Modal content */}
               <div className="p-6">
-                {/* Project image */}
-                <div className="h-64 md:h-80 rounded-lg overflow-hidden mb-6">
+                {/* Project image with enhanced error handling */}
+                <div className="h-64 md:h-80 rounded-lg overflow-hidden mb-6 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
                   <img
                     src={selectedProject.imageUrl}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
+                    onError={handleImageError}
+                    loading="lazy"
                   />
                 </div>
 
@@ -141,7 +153,7 @@ export default function Home() {
                     {selectedProject.title}
                   </h3>
                   <div className="flex space-x-4 mt-4 md:mt-0">
-                    {selectedProject.githubUrl && (
+                    {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
                       <a
                         href={selectedProject.githubUrl}
                         target="_blank"
@@ -152,7 +164,7 @@ export default function Home() {
                         Code
                       </a>
                     )}
-                    {selectedProject.liveUrl && (
+                    {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
                       <a
                         href={selectedProject.liveUrl}
                         target="_blank"

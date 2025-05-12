@@ -1,28 +1,28 @@
 import { motion } from 'framer-motion';
 
-const projects = [
-  {
-    id: 1,
-    title: "E-commerce Platform",
-    description: "A full-featured online store with cart functionality and payment integration.",
-    tags: ["React", "Node.js", "MongoDB"],
-    imageUrl: "/images/ecommerce.jpg"
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "Productivity application with drag-and-drop interface and team collaboration.",
-    tags: ["TypeScript", "Firebase", "Material UI"],
-    imageUrl: "/images/taskapp.jpg"
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description: "Custom designed and developed portfolio for a freelance photographer.",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/images/portfolio.jpg"
-  }
-];
+// const projects = [
+//   {
+//     id: 1,
+//     title: "E-commerce Platform",
+//     description: "A full-featured online store with cart functionality and payment integration.",
+//     tags: ["React", "Node.js", "MongoDB"],
+//     imageUrl: "/images/ecommerce.jpg"
+//   },
+//   {
+//     id: 2,
+//     title: "Task Management App",
+//     description: "Productivity application with drag-and-drop interface and team collaboration.",
+//     tags: ["TypeScript", "Firebase", "Material UI"],
+//     imageUrl: "/images/taskapp.jpg"
+//   },
+//   {
+//     id: 3,
+//     title: "Portfolio Website",
+//     description: "Custom designed and developed portfolio for a freelance photographer.",
+//     tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
+//     imageUrl: "/images/portfolio.jpg"
+//   }
+// ];
 
 export default function ProjectCard({ project, index }) {
   return (
